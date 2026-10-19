@@ -671,7 +671,7 @@ if filtered_df.empty:
 # ABAS
 # ============================================================
 
-tab_overview, tab_compare, tab_distribution, tab_relationships, tab_profiles, tab_data = st.tabs(
+tab_overview, tab_compare, tab_distribution, tab_relationships, tab_profiles, tab_data, tab_sources = st.tabs(
     [
         "📊 Overview",
         "⚔️ Character Comparison",
@@ -679,8 +679,10 @@ tab_overview, tab_compare, tab_distribution, tab_relationships, tab_profiles, ta
         "🔬 Attribute Relationships",
         "🧬 Character Profiles",
         "📋 Data Explorer",
+        "📚 Sources & License",
     ]
 )
+
 
 
 # ============================================================
@@ -1534,3 +1536,35 @@ with tab_data:
         metadata_quality["Available"] / len(filtered_df) * 100
     ).round(2)
     st.dataframe(metadata_quality, use_container_width=True, hide_index=True)
+
+# ============================================================
+# 7. DATA SOURCES AND LICENSE
+# ============================================================
+
+
+with tab_sources:
+    st.header("Sources & License")
+
+    st.markdown(
+        """
+        ### Data source
+
+        Data presented in this dashboard was collected from the
+        [Marvel Database on Fandom](https://marvel.fandom.com/wiki/Marvel_Database),
+        including character Power Grid ratings and other character information.
+
+        ### License
+
+        The reused wiki content is licensed under
+        [Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)](
+        https://creativecommons.org/licenses/by-sa/3.0/).
+
+        Adaptations of content covered by this license are shared
+        under the same license, with attribution to the original source.
+
+        ### Disclaimer
+
+        This is an independent, unofficial fan project. It is not
+        affiliated with, endorsed by, or sponsored by Marvel or Fandom.
+        """
+    )
